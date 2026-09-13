@@ -1,0 +1,36 @@
+{
+  "name": "hood-revenge-store",
+  "version": "1.0.0",
+  "description": "E-commerce website for the streetwear brand HOOD REVENGE.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "export": "next build && next export"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "stripe": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "16.3.5",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.19",
+    "typescript": "5.9.3"
+  },
+  "keywords": [
+    "ecommerce",
+    "streetwear",
+    "nextjs",
+    "react"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
