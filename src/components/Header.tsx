@@ -1,0 +1,3 @@
+import Link from 'next/link';
+import {useCart} from '../lib/cart';
+export default function Header(){const {items}=useCart();return <><div className="announcement">INDEPENDENT SPIRIT. EVERYDAY UNIFORM. <span>STOREFRONT PREVIEW — SAMPLE PRODUCTS</span></div><header className="site-header"><Link href="/" className="wordmark" aria-label="Hood Revenge home">HOOD<br/>REVENGE<span>®</span></Link><nav aria-label="Main navigation"><Link href="/products">Shop all</Link><Link href="/products?category=Hoodies">Hoodies</Link><Link href="/products?category=Tees">Tees</Link></nav><Link href="/cart" className="bag">Bag <span>{items.reduce((n,x)=>n+x.quantity,0)}</span></Link></header></>}
