@@ -1,11 +1,11 @@
-# Node / Next
 node_modules/
 .next/
-out/
+.env*
+!.env.example
+*.tsbuildinfo
+
+# Local machine files and logs
 .DS_Store
-.env
-.env.local
-.env.*.local
-# Editor
-.vscode/
-.idea/
+*.log
+.vercel/
+.netlify/

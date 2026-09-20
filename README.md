@@ -1,104 +1,27 @@
-# HOOD REVENGE eCommerce Store
+# HOOD REVENGE storefront
 
-Welcome to the HOOD REVENGE eCommerce store project! This project is a fully responsive online store for the streetwear brand "HOOD REVENGE," designed with a minimalist, monochrome aesthetic.
+Run commands from this folder (hood-revenge-store-1), not its parent.
 
-## Project Structure
-
-The project is structured as follows:
-
+```sh
+npm install
+npm run dev
 ```
-hood-revenge-store
-├── src
-│   ├── pages
-│   │   ├── _app.tsx
-│   │   ├── _document.tsx
-│   │   ├── index.tsx
-│   │   ├── cart.tsx
-│   │   ├── checkout.tsx
-│   │   ├── search.tsx
-│   │   ├── account
-│   │   │   └── index.tsx
-│   │   └── product
-│   │       └── [slug].tsx
-│   ├── components
-│   │   ├── Header.tsx
-│   │   ├── Footer.tsx
-│   │   ├── ProductCard.tsx
-│   │   ├── ProductGrid.tsx
-│   │   ├── ProductGallery.tsx
-│   │   ├── CartDrawer.tsx
-│   │   ├── CheckoutForm.tsx
-│   │   └── Icon
-│   │       └── CloseIcon.tsx
-│   ├── styles
-│   │   ├── globals.css
-│   │   └── components
-│   │       └── header.css
-│   ├── lib
-│   │   ├── api.ts
-│   │   └── stripe.ts
-│   ├── hooks
-│   │   ├── useCart.ts
-│   │   └── useProduct.ts
-│   ├── context
-│   │   └── CartContext.tsx
-│   └── types
-│       └── index.ts
-├── pages
-│   └── api
-│       ├── products.ts
-│       ├── cart.ts
-│       └── checkout.ts
-├── public
-│   └── fonts
-├── .eslintrc.json
-├── .gitignore
-├── next.config.js
-├── package.json
-├── postcss.config.js
-├── tailwind.config.js
-├── tsconfig.json
-└── README.md
+
+Open the local URL printed by Next.js. After dependency or PostCSS changes, restart the development server.
+
+```sh
+npm run typecheck
+npm run build
+npm start
 ```
+
+Tailwind v4 uses `@tailwindcss/postcss` in `postcss.config.mjs` and `@import "tailwindcss"` in the global CSS. No Tailwind CLI or `init -p` command is needed. Development and production scripts use Next.js’s supported Webpack compiler because Turbopack’s CSS worker could not start in the verification environment.
 
 ## Features
+Responsive storefront, searchable/filterable/sortable catalogue, static product pages, size selection, persistent local cart, quantity controls, custom 404 and explicit checkout preview.
 
-- **Responsive Design**: The website is fully responsive, ensuring a seamless experience across devices.
-- **Minimalist Aesthetic**: The design follows a monochrome theme, focusing on simplicity and elegance.
-- **Product Management**: Users can browse products, view details, and add items to their cart.
-- **Checkout Process**: A streamlined checkout process allows users to complete their purchases easily.
-- **User Account Management**: Users can create and manage their accounts.
+## Before accepting orders
+All products, illustrations and ZAR prices are samples. Replace `src/lib/catalog.ts` with approved product data and actual photos. Configure stock, shipping, tax and legal policies. Implement server-side checkout with the selected payment provider and verified webhooks. Never trust cart prices from the browser. No payment credentials or customer data are collected by this preview.
 
-## Getting Started
-
-To get started with the project, follow these steps:
-
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   ```
-
-2. Navigate to the project directory:
-   ```
-   cd hood-revenge-store
-   ```
-
-3. Install the dependencies:
-   ```
-   npm install
-   ```
-
-4. Run the development server:
-   ```
-   npm run dev
-   ```
-
-5. Open your browser and go to `http://localhost:3000` to view the application.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
+## Deployment
+Use a host that supports Next.js. Set the project root to `hood-revenge-store-1`, install with `npm ci`, and build with `npm run build`. For a Node.js server, run `npm start` after the build. VS Code Live Server cannot serve these source files. A hosting account/site must be selected before publishing.

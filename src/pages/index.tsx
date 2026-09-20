@@ -1,7 +1,5 @@
-import React from "react";
-
-export default function RootTest() {
-  return (
-    <div style={{ padding: 40 }}>Root pages/index.tsx test — should render</div>
-  );
-}
+import Link from 'next/link';
+import {products} from '../lib/catalog';
+import ProductCard from '../components/ProductCard';
+import Garment from '../components/Garment';
+export default function Home(){return <main id="main"><section className="hero"><div className="hero-copy"><p className="eyebrow"><span className="orange-dot"/> HOOD REVENGE / COLLECTION 001</p><h1>NOT MADE<br/>TO <span>FIT IN.</span></h1><p className="hero-description">For the ones who move differently.<br/>Streetwear with a mind of its own.</p><Link className="button button-orange" href="/products">Explore the collection <span>↗</span></Link><div className="hero-footnote"><span>01 / THE EVERYDAY REBELLION</span><span>EST. ON OUR OWN TERMS</span></div></div><div className="hero-art"><span className="hero-stamp">HR®</span><div className="hero-orbit"/><Garment product={products[0]} hero/><div className="hero-caption"><span>AFTER HOURS HOODIE<br/><small>CONCEPT DESIGN / WASHED BLACK</small></span><Link href={`/products/${products[0].id}`} aria-label="View After Hours Hoodie">↗</Link></div><span className="vertical-label">WEAR YOUR OWN STORY</span></div></section><div className="ticker" aria-hidden="true">NO PERMISSION NEEDED. <span>✳</span> MAKE YOUR OWN WAY. <span>✳</span> HOOD REVENGE. <span>✳</span> NO PERMISSION NEEDED.</div><section className="section"><div className="section-heading"><div><p className="eyebrow">THE FIRST CHAPTER</p><h2>THE ROTATION.</h2></div><Link href="/products" className="text-link">Shop all pieces ↗</Link></div><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">{products.slice(0,3).map(p=><ProductCard key={p.id} product={p}/>)}</div></section><section className="manifesto"><p className="eyebrow">MORE THAN WHAT YOU WEAR.</p><h2>LESS FOLLOWING.<br/>MORE <span>FEELING.</span></h2><p>HOOD REVENGE is an idea: show up as yourself.<br/>No dress code. No permission. Just your own way.</p><Link className="text-link" href="/products">Find your uniform ↗</Link></section></main>}

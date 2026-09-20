@@ -1,18 +1,2 @@
-import React from 'react';
-
-const Footer: React.FC = () => {
-    return (
-        <footer className="bg-black text-white py-6">
-            <div className="container mx-auto text-center">
-                <p className="mb-4">© {new Date().getFullYear()} HOOD REVENGE. All rights reserved.</p>
-                <div className="flex justify-center space-x-4">
-                    <a href="/terms" className="hover:underline">Terms of Service</a>
-                    <a href="/privacy" className="hover:underline">Privacy Policy</a>
-                    <a href="/contact" className="hover:underline">Contact Us</a>
-                </div>
-            </div>
-        </footer>
-    );
-};
-
-export default Footer;
+import Link from 'next/link';
+export default function Footer(){return <footer className="site-footer"><div><p className="eyebrow">YOUR STORY. YOUR RULES.</p><h2>MAKE YOUR<br/>OWN WAY.</h2></div><div className="footer-links"><Link href="/products">Explore the collection ↗</Link><Link href="/cart">Your bag ↗</Link><Link href="/checkout">Ordering information ↗</Link><p>Concept storefront. Products, illustrations and prices are samples.<br/>Orders and payments are not yet available.</p></div><div className="footer-bottom"><span>© {new Date().getFullYear()} HOOD REVENGE</span><span>BUILT FOR THE EVERYDAY REBEL.</span></div></footer>}
