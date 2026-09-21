@@ -1,0 +1,26 @@
+{
+  "name": "hood-revenge-store",
+  "version": "1.0.0",
+  "description": "An e-commerce site for hood revenge products.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [
+    "ecommerce",
+    "nextjs",
+    "react"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^13.0.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.0"
+  }
+}
