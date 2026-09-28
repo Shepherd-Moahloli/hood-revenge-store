@@ -5,6 +5,11 @@ export const products: Product[] = [
 { id:'signal-hoodie', title:'Signal Hoodie', category:'Hoodies', price:949, color:'#bb492b', ink:'#eee7db', sizes:['S','M','L','XL'], description:'A statement colour and oversized shape. A concept piece made to stand apart.' },
 { id:'uniform-tee', title:'Uniform Tee', category:'Tees', price:449, color:'#373932', ink:'#dedbca', sizes:['S','M','L','XL'], description:'An understated colour with a strong graphic. Your next everyday uniform, presented here as a sample.' },
 { id:'night-shift-beanie', title:'Night Shift Beanie', category:'Accessories', price:249, color:'#292827', ink:'#e6dfd1', sizes:['One size'], description:'A cuffed beanie concept with a signature woven-style badge.' },
-{ id:'off-grid-tee', title:'Off Grid Tee', category:'Tees', price:499, color:'#333333', ink:'#df6135', sizes:['S','M','L','XL'], description:'Dark tones and a high-contrast graphic. A sample design for the next drop.' }
+{ id:'off-grid-tee', title:'Off Grid Tee', category:'Tees', price:499, color:'#333333', ink:'#df6135', sizes:['S','M','L','XL'], description:'Dark tones and a high-contrast graphic. A sample design for the next drop.' },
+{ id:'concrete-hoodie', title:'Concrete Hoodie', category:'Hoodies', price:899, color:'#9b9b96', ink:'#111111', sizes:['S','M','L','XL'], description:'A cool grey hoodie concept with a relaxed silhouette. Sample product for the first collection.' },
+{ id:'midnight-hoodie', title:'Midnight Hoodie', category:'Hoodies', price:949, color:'#252c40', ink:'#ffffff', sizes:['S','M','L','XL'], description:'A deep navy hoodie concept with a crisp signature graphic. Sample product for the first collection.' },
+{ id:'daybreak-tee', title:'Daybreak Tee', category:'Tees', price:449, color:'#ffffff', ink:'#111111', sizes:['S','M','L','XL'], description:'A clean white tee concept with a black wordmark. Sample product for the first collection.' },
+{ id:'echo-tee', title:'Echo Tee', category:'Tees', price:499, color:'#78566b', ink:'#ffffff', sizes:['S','M','L','XL'], description:'A muted plum tee concept with a bold chest graphic. Sample product for the first collection.' },
+{ id:'concrete-beanie', title:'Concrete Beanie', category:'Accessories', price:249, color:'#a3a19b', ink:'#111111', sizes:['One size'], description:'A grey cuffed beanie concept with a signature badge. Sample product for the first collection.' }
 ];
 export const money = (amount:number) => new Intl.NumberFormat('en-ZA',{style:'currency',currency:'ZAR',maximumFractionDigits:0}).format(amount);
