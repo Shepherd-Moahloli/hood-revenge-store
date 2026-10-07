@@ -36,6 +36,6 @@ export default function SignupPopup() {
     </form>
     <p id="signup-preview" className="signup-note">Preview — mailing-list signups are not live yet. No email addresses are collected.</p>
     <p className="signup-status" role="status">{message}</p>
-    <div className="signup-brand" aria-label="Hood Revenge">HOOD<br/>REVENGE</div>
+    <div className="signup-brand"><img src="/images/HOOD-LOGO.png" alt="Hood Revenge" width={1228} height={1218} className="signup-logo"/></div>
   </dialog>;
 }

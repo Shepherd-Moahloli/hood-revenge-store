@@ -23,7 +23,7 @@ export default function Header() {
         menuButton.current?.focus();
       }
     }}>
-      <Link href="/" className="wordmark" aria-label="Hood Revenge home">HOOD<br/>REVENGE<span>®</span></Link>
+      <Link href="/" className="wordmark" aria-label="Hood Revenge home"><img src="/images/HOOD-LOGO.png" alt="Hood Revenge" width={1228} height={1218} className="header-logo"/></Link>
       <nav className="desktop-nav" aria-label="Main navigation">
         <Link href="/products">Shop all</Link>
         <Link href="/products?category=Hoodies">Hoodies</Link>

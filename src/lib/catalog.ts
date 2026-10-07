@@ -1,4 +1,4 @@
-export type Product = { id: string; title: string; category: 'Hoodies' | 'Tees' | 'Accessories'; price: number; color: string; ink: string; sizes: string[]; description: string };
+export type Product = { photos?: {src: string; alt: string}[]; id: string; title: string; category: 'Hoodies' | 'Tees' | 'Accessories'; price: number; color: string; ink: string; sizes: string[]; description: string };
 export const products: Product[] = [
 { id:'after-hours-hoodie', title:'After Hours Hoodie', category:'Hoodies', price:899, color:'#282726', ink:'#eee7db', sizes:['S','M','L','XL'], description:'An oversized silhouette with a bold chest graphic. A concept piece for the first HOOD REVENGE collection.' },
 { id:'revenge-tee', title:'Revenge Heavyweight Tee', category:'Tees', price:449, color:'#e5ded0', ink:'#282726', sizes:['S','M','L','XL'], description:'A relaxed everyday tee with our signature wordmark. A concept piece for the first collection.' },
