@@ -9,7 +9,12 @@ export default function ProductCard({product}:{product:Product}) {
     <div className="product-art">
       <Link href={`/products/${product.id}`} className="product-image-link" aria-label={`View ${product.title}`}>
         <span className="art-label">CONCEPT / {back ? 'BACK' : 'FRONT'}</span>
-        <Garment product={product} back={back}/>
+        <div className="product-flip-scene">
+          <div className={`product-flip-inner${back ? ' is-flipped' : ''}`}>
+            <div className="product-flip-face product-flip-front" aria-hidden={back}><Garment product={product}/></div>
+            <div className="product-flip-face product-flip-back" aria-hidden={!back}><Garment product={product} back/></div>
+          </div>
+        </div>
         <span className="product-arrow" aria-hidden="true">↗</span>
       </Link>
       <button type="button" className="product-view-toggle" aria-label={`Show ${back ? 'front' : 'back'} of ${product.title}`} aria-pressed={back} onClick={() => setBack(value => !value)}>{back ? 'View front' : 'View back'}</button>
