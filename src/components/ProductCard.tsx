@@ -1,11 +1,31 @@
 import Link from 'next/link';
-import {useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {money,type Product} from '../lib/catalog';
 import Garment from './Garment';
 
 export default function ProductCard({product}:{product:Product}) {
   const [back, setBack] = useState(false);
-  return <article className="product-card group" onPointerEnter={event => {if(event.pointerType === 'mouse') setBack(true);}} onPointerLeave={event => {if(event.pointerType === 'mouse') setBack(false);}}>
+  const cardRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    let resetTimer: ReturnType<typeof setTimeout> | undefined;
+    const revealUnderFinger = (event: TouchEvent) => {
+      if (event.touches.length !== 1) return;
+      const touch = event.touches[0];
+      const target = document.elementFromPoint(touch.clientX, touch.clientY);
+      if (target?.closest('.product-card') !== cardRef.current) return;
+      setBack(true);
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(() => setBack(false), 1800);
+    };
+    document.addEventListener('touchstart', revealUnderFinger, {passive: true});
+    document.addEventListener('touchmove', revealUnderFinger, {passive: true});
+    return () => {
+      clearTimeout(resetTimer);
+      document.removeEventListener('touchstart', revealUnderFinger);
+      document.removeEventListener('touchmove', revealUnderFinger);
+    };
+  }, []);
+  return <article ref={cardRef} className="product-card group" onPointerEnter={event => {if(event.pointerType === 'mouse') setBack(true);}} onPointerLeave={event => {if(event.pointerType === 'mouse') setBack(false);}}>
     <div className="product-art">
       <Link href={`/products/${product.id}`} className="product-image-link" aria-label={`View ${product.title}`}>
         <span className="art-label">CONCEPT / {back ? 'BACK' : 'FRONT'}</span>
