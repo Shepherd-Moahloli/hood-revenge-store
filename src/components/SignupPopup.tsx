@@ -7,18 +7,25 @@ export default function SignupPopup() {
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    const previousOverflow = document.body.style.overflow;
-    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    const restore = () => {
-      document.body.style.overflow = previousOverflow;
-      previousFocus?.focus();
-    };
-    dialog.addEventListener('close', restore);
-    dialog.showModal();
-    document.body.style.overflow = 'hidden';
+    let restore = () => {};
+    const timer = window.setTimeout(() => {
+      const previousOverflow = document.body.style.overflow;
+      const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      let restored = false;
+      restore = () => {
+        if (restored) return;
+        restored = true;
+        document.body.style.overflow = previousOverflow;
+        if (previousFocus?.isConnected) previousFocus.focus();
+      };
+      dialog.addEventListener('close', restore);
+      dialog.showModal();
+      document.body.style.overflow = 'hidden';
+    }, 20_000);
     return () => {
+      window.clearTimeout(timer);
       dialog.removeEventListener('close', restore);
-      dialog.close();
+      if (dialog.open) dialog.close();
       restore();
     };
   }, []);

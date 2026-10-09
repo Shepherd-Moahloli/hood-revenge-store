@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import {useRef, useState} from 'react';
 import {useCart} from '../lib/cart';
-import {products, money} from '../lib/catalog';
+import {products, money, coloredProduct} from '../lib/catalog';
 export default function Checkout() {
   const {items,ready} = useCart();
   const [busy,setBusy] = useState(false), [error,setError] = useState('');
   const lock = useRef(false);
+  const last = items[items.length-1];
+  const base = products.find(p=>p.id===last?.id);
+  const shade = base ? coloredProduct(base,last?.color) : null;
+  const buttonStyle = shade ? {backgroundColor:shade.color,color:shade.ink} : undefined;
   const total = items.reduce((sum,item)=>sum+(products.find(p=>p.id===item.id)?.price || 0)*item.quantity,0);
   return <main id="main" className="section checkout"><p className="eyebrow">PayGate · test mode only</p><h1 className="page-title">Test checkout</h1>
     <p>Sample products. No real payment or order will be created. Use only PayGate test card details.</p>
@@ -24,7 +28,7 @@ export default function Checkout() {
         document.body.appendChild(form); form.submit();
       } catch(error) {setError(error instanceof Error ? error.message : 'Please try again.'); setBusy(false); lock.current=false;}
     }}><label htmlFor="checkout-email">Email for PayGate test confirmation</label><input id="checkout-email" name="email" type="email" required maxLength={254} autoComplete="email"/>
-      <button className="button button-outline" disabled={busy} type="submit">{busy?'Opening PayGate…':'Continue to PayGate test payment →'}</button></form>
+      <button style={buttonStyle} className="button button-outline" disabled={busy} type="submit">{busy?'Opening PayGate…':'Continue to PayGate test payment →'}</button></form>
       <p role="alert">{error}</p><p>Test Visa: 4000 0000 0000 0002. Use a future expiry date and any test CVV.</p>
-    </>}<Link className="text-link" href="/cart">Back to bag</Link></main>;
+    </>}<Link style={buttonStyle} className="button button-outline" href="/cart">Back to bag</Link></main>;
 }
