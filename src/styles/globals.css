@@ -308,3 +308,8 @@ input::placeholder, textarea::placeholder { text-transform: uppercase; }
   }
   .site-header nav.mobile-menu a { color: #000; font-weight: 700; }
 }
+
+.color-swatches { display: flex; gap: 12px; padding: 5px; }
+.color-swatches button { width: 24px; height: 24px; min-width: 24px; min-height: 24px; padding: 0; flex: 0 0 24px; border: 1px solid #777; border-radius: 50%; cursor: pointer; }
+.color-swatches button[aria-pressed="true"] { outline: 2px solid #000; outline-offset: 3px; }
+.color-swatches button:focus-visible { outline: 3px dashed #000; outline-offset: 4px; }

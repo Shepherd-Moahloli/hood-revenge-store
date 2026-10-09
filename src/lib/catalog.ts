@@ -137,3 +137,18 @@ export const money = (amount: number) =>
     currency: "ZAR",
     maximumFractionDigits: 0,
   }).format(amount);
+
+export function productColors(product: Product) {
+  const palette = [
+    {id: 'lime', name: 'Bright Lime', color: '#c4f52a', ink: '#111111'},
+    {id: 'cream', name: 'Cream', color: '#e5ded0', ink: '#282726'},
+    {id: 'pink', name: 'Pink', color: '#f5a9c7', ink: '#111111'},
+    {id: 'black', name: 'Black', color: '#282726', ink: '#eee7db'},
+  ];
+  const match = palette.find(c => c.color === product.color);
+  return [{id:'original', name:match?.name || 'Original', color:product.color, ink:product.ink}, ...palette.filter(c=>c.color !== product.color).slice(0,3)];
+}
+export function coloredProduct(product: Product, colorId = 'original'): Product {
+  const choice = productColors(product).find(c=>c.id===colorId) || productColors(product)[0];
+  return {...product, color:choice.color, ink:choice.ink, photos:colorId==='original' ? product.photos : []};
+}

@@ -1,5 +1,5 @@
 import {createHash, createHmac, timingSafeEqual} from 'node:crypto';
-import {products} from './catalog';
+import {products,productColors} from './catalog';
 // Deliberately fixed to PayGate's published sandbox account. No live mode.
 export const testId = '10011072130';
 const testKey = 'secret';
@@ -10,7 +10,9 @@ export function totalFor(items: unknown) {
   return items.reduce((total, item) => {
     const product = products.find(p => p.id === item?.id);
     if (!product || !product.sizes.includes(item.size) || !Number.isInteger(item.quantity) || item.quantity < 1 || item.quantity > 10) throw new Error('Invalid bag');
-    const key = item.id + ':' + item.size;
+    const color = item.color ?? 'original';
+    if (!productColors(product).some(c=>c.id===color)) throw new Error('Invalid color');
+    const key = item.id + ':' + item.size + ':' + color;
     if (seen.has(key)) throw new Error('Duplicate item');
     seen.add(key);
     return total + Math.round(product.price * 100) * item.quantity;
